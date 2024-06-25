@@ -1,0 +1,31 @@
+version: "3.3"
+
+services:
+  redis:
+    image: redis:latest
+    container_name: redis
+    restart: always
+    volumes:
+      - redis_volume_data:/data
+    ports:
+      - 6379:6379
+    networks:
+      - crawler_gold_currency
+  redis_insight:
+    image: redislabs/redisinsight:1.14.0
+    container_name: redis_insight
+    restart: always
+    ports:
+      - 8001:8001
+    volumes:
+      - redis_insight_volume_data:/db
+    networks:
+      - crawler_gold_currency
+  celery:
+    image: celery:latest
+volumes:
+  redis_volume_data:
+  redis_insight_volume_data:
+networks:
+  crawler_gold_currency:
+    driver: bridge
