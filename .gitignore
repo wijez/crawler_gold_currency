@@ -182,4 +182,6 @@ output
 data
 postgres_data
 app/opa/bundle.tar.gz
-
+celerybeat-schedule.bak
+celerybeat-schedule.dir
+celerybeat-schedule.dat

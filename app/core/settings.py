@@ -37,7 +37,7 @@ class Settings(BaseSettings):
     JWT_SECRET: str = os.environ.get("JWT_SECRET", "649fb93ef34e4fdf4187709c84d643dd61ce730d91856418fdcf563f895ea40f")
     ALGORITHM: str = os.environ.get("ALGORITHM", "HS256")
 
-    ACCESS_TOKEN_EXPIRE_MINUTES: int = os.environ.get("ACCESS_TOKEN_EXPIRE_MINUTES", "15")
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = os.environ.get("ACCESS_TOKEN_EXPIRE_MINUTES", "60")
     REFRESH_TOKEN_EXPIRE_HOURS: int = os.environ.get("REFRESH_TOKEN_EXPIRE_HOURS", "5")
     REFRESH_TOKEN_COOKIE_NAME: str = os.environ.get("REFRESH_TOKEN_COOKIE_NAME", "fastapi_cookie")
 
@@ -54,6 +54,13 @@ class Settings(BaseSettings):
     OPA_SERVER_PORT: str = os.environ.get("OPA_SERVER_PORT", "8181")
 
     API_KEY: str = os.environ.get("API_KEY", "goldapi-bub5hnslxsfbdwf-io")
+
+    REDIS_HOST: str = os.environ.get("REDIS_HOST", "localhost")
+    REDIS_PORT: str = os.environ.get("REDIS_PORT", 6379)
+    REDIS_URL: str = os.environ.get("REDIS_URL", "redis://localhost:6379/0")
+
+    CELERY_BROKER_URL: str = os.environ.get("CELERY_BROKER_URL", "redis://localhost:6379/0")
+    CELERY_RESULT_BACKEND: str = os.environ.get("CELERY_RESULT_BACKEND", "redis://localhost:6379/0")
 
 
 @lru_cache()
